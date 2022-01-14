@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet author="Maxim Bukvich" id="1639929983768-1">
+        <createTable tableName="student">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_student"/>
+            </column>
+            <column name="name" type="VARCHAR(2)">
+                <constraints nullable="false" notNullConstraintName="NN_student_name"/>
+            </column>
+        </createTable>
+        <createTable tableName="professor">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_professor"/>
+            </column>
+            <column name="name" type="VARCHAR(2)">
+                <constraints nullable="false" notNullConstraintName="NN_professor_name"/>
+            </column>
+        </createTable>
+        <createTable tableName="exam">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_exam"/>
+            </column>
+            <column name="title" type="VARCHAR(255)">
+                <constraints nullable="false" notNullConstraintName="NN_exam_title"/>
+            </column>
+            <column name="professor_id" type="INT">
+                <constraints foreignKeyName="FKa52b978ffd764c8589e14e3f8aeea4bd" deferrable="false"
+                             initiallyDeferred="false" referencedColumnNames="id"
+                             referencedTableName="professor" validateForeignKey="true"
+                             unique="true"/>
+            </column>
+        </createTable>
+        <createTable tableName="exam_student">
+            <column name="exam_id" type="INT">
+                <constraints foreignKeyName="FKa52b978ffd764c8589e14e3f8aeea5bd" deferrable="false"
+                             initiallyDeferred="false" referencedColumnNames="id"
+                             referencedTableName="exam" validateForeignKey="true"
+                             unique="true"/>
+            </column>
+            <column name="student_id" type="INT">
+                <constraints foreignKeyName="FKa52b978ffd764c8589e14e3f8aeea6bd" deferrable="false"
+                             initiallyDeferred="false" referencedColumnNames="id"
+                             referencedTableName="student" validateForeignKey="true"
+                             unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
