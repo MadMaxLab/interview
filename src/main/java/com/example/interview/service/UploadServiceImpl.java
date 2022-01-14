@@ -10,7 +10,7 @@ import java.util.UUID;
 import java.util.stream.Stream;
 
 @Service
-@ConditionalOnMissingBean
+@ConditionalOnMissingBean(UploadService.class)
 public class UploadServiceImpl implements UploadService {
     private final ExamService examService;
     private final StudentService studentService;
