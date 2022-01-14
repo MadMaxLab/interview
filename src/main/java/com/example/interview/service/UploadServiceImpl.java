@@ -2,6 +2,7 @@ package com.example.interview.service;
 
 import com.example.interview.entity.Professor;
 import com.example.interview.entity.Student;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.UUID;
 import java.util.stream.Stream;
 
 @Service
+@ConditionalOnMissingBean
 public class UploadServiceImpl implements UploadService {
     private final ExamService examService;
     private final StudentService studentService;
