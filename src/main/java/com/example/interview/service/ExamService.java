@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface ExamService {
     Exam create(List<Student> students, Professor professor);
+
+    Exam createEmpty();
 }

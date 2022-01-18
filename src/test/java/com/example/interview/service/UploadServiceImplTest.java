@@ -13,5 +13,4 @@ class UploadServiceImplTest {
     void processBatchShouldWork() {
         assertTrue(uploadService.processBatch());
     }
-
 }
